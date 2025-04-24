@@ -1,5 +1,5 @@
-##EXP-03: Change the Third Person Character Mesh and Add Animations.
-##Aim:
+EXP-03: Change the Third Person Character Mesh and Add Animations.
+Aim:
 To Change the third-person character mesh and add animations
 Procedure:
 1: Prepare your new character mesh and animations:
