@@ -1,10 +1,10 @@
-EXP-01: Implementing various effects in a material such as emissive, roughness and
+# EXP-01: Implementing various effects in a material such as emissive, roughness and
 metallic properties in Unreal Engine.
-Aim:
+## Aim:
 To implement various effects in a material such as emissive, roughness and metallic
 properties in Unreal Engine.
 
-Procedure:
+## Procedure:
 1. Open Unreal engine and create new project, select third person.
 2. Left click in the content browser add new material and name the new material.
 3. In the new material tab ,left click and select the option Constant4 where you can select
@@ -22,9 +22,9 @@ project.
 
 
 
-Output:
+## Output:
 //paste your screenshot here
 
-Result:
+## Result:
 Implementing various effects in a material such as emissive, roughness and metallic
 properties in Unreal Engine was done succe
