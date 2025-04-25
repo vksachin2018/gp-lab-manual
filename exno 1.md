@@ -19,5 +19,4 @@ properties in Unreal Engine.
 //paste your screenshot here
 
 ## Result:
-Implementing various effects in a material such as emissive, roughness and metallic
-properties in Unreal Engine was done succe
+Implementing various effects in a material such as emissive, roughness and metallic properties in Unreal Engine was done successfully.
