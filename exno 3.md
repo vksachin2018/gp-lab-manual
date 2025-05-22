@@ -1,4 +1,4 @@
-##Changing Third Person Character Mesh and Adding Animations in Unreal Engine
+## Changing Third Person Character Mesh and Adding Animations in Unreal Engine
 ## Date:23/3/25
 ## Aim
 To replace the default third person character mesh with a custom skeletal mesh and apply new animations using an animation blueprint.
