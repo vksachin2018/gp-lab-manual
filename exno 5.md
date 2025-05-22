@@ -1,59 +1,66 @@
-#EXP-05: Making Player to collect the ammo and increase the bullet spawn Count.
+##EXP-05: Making Player to collect the ammo and increase the bullet spawn Count.
 ## Date:17/4/25
 
-## Aim
-To implement an AI character in Unreal Engine that roams randomly within a defined area using Behavior Trees and Navigation Mesh.
+##  Aim
+To implement a gameplay feature where the player collects ammo pickups in the game world. Upon collecting ammo, the player's ammo count increases, enabling more bullet spawns (shots).
 
-## Procedure
+---
 
-1. *Navigation Setup*
-   - Add a NavMeshBoundsVolume to your level and scale it to cover the roamable area.
-   - Ensure navigation is built (press *P* to visualize the navmesh).
+## 🛠️ Procedure
 
-2. *Create AI Character*
-   - Create a new Character or Pawn Blueprint (e.g., BP_AICharacter).
-   - Add an AIController Blueprint (e.g., BP_AIController) and assign it to your AI character.
+### 1. Setup Player Character
 
-3. *Set Up Behavior Tree*
-   - Create a Behavior Tree (e.g., BT_RandomRoam) and a corresponding Blackboard.
-   - Add a Blackboard Key (e.g., TargetLocation) of type Vector.
+- Open your `PlayerCharacter` Blueprint.
+- Add a new **Integer** variable named `AmmoCount`.
+- Set an initial default value (e.g., `AmmoCount = 10`).
+- Ensure you have a shooting mechanism in place that uses `AmmoCount` to determine if a bullet can be fired.
 
-4. *Implement Roaming Logic*
-   - In the Behavior Tree, use the following structure:
-     - *Root* ➝ *Selector*
-       - *Sequence*
-         - Find Random Location (custom task to set TargetLocation)
-         - Move To node (uses TargetLocation)
-   - Create a custom BTTask Blueprint for finding a random location using UNavigationSystemV1::GetRandomPointInNavigableRadius.
+### 2. Create Ammo Pickup Blueprint
 
-5. *Place and Test*
-   - Place your AI character in the level.
-   - Assign the AI Controller and Behavior Tree.
-   - Play the scene and observe the AI roaming randomly.
+- Go to the Content Browser → Right-click → **Blueprint Class** → Select **Actor** → Name it `BP_AmmoPickup`.
+- Add components:
+  - **Static Mesh**: Representing the ammo (e.g., a bullet or crate).
+  - **Sphere Collision**: To detect overlap with the player.
+- In the Event Graph of `BP_AmmoPickup`:
+  - Use `OnComponentBeginOverlap` on the Sphere Collision.
+  - Cast to `PlayerCharacter`.
+  - Increase the player’s `AmmoCount` (e.g., `AmmoCount += 5`).
+  - Optionally, play a pickup sound or effect.
+  - Destroy the ammo pickup actor.
 
+### 3. Update Shooting Logic (Optional)
 
+- In your player’s shooting logic:
+  - Before spawning a bullet, check `if AmmoCount > 0`.
+  - If true:
+    - Spawn bullet.
+    - Decrease `AmmoCount` by 1.
+
+### 4. Place Ammo in the World
+
+- Drag instances of `BP_AmmoPickup` into your level from the Content Browser.
+- Adjust position, mesh, and pickup range as needed.
+
+---
 
 ## Output
 
+![Screenshot 2025-05-14 140722](https://github.com/user-attachments/assets/ad7eefea-575c-44ae-9eca-6e9a623a8ef4)
 
-![Screenshot 2025-05-08 221444](https://github.com/user-attachments/assets/2bfed4fb-8a19-47e9-9b7f-23fbc1cee889)
-
-
-
-![image](https://github.com/user-attachments/assets/286ac6c8-e8a1-4d75-b03f-c5bc78b75f17)
+![Screenshot 2025-05-14 140736](https://github.com/user-attachments/assets/e82640a3-06c3-48e0-9abd-11a2e60640ba)
 
 
+![image](https://github.com/user-attachments/assets/ca2adaf2-d5b2-42fc-a40e-a81d6d69d965)
 
-![image](https://github.com/user-attachments/assets/792fcfa6-da04-4187-9ea6-fa756a158de6)
-
-
-
-![image](https://github.com/user-attachments/assets/479bd6be-0a5a-43cc-8d44-b5be25f5ee0e)
+![image](https://github.com/user-attachments/assets/e28cfc27-f127-40cf-94ba-e95d5fa1901f)
 
 
-![image](https://github.com/user-attachments/assets/ce3e04b6-4581-4669-8225-01837f12f8f5)
+## ✅ Result
+
+- The player starts with a limited number of bullets.
+- When the player overlaps with an ammo pickup:
+  - The ammo is collected.
+  - The player's `AmmoCount` increases.
+- The player can now fire additional bullets based on the updated ammo count.
 
 
-
-## Result
-The AI character successfully roams within the defined NavMesh area, choosing random destinations at intervals using the Behavior Tree logic.
