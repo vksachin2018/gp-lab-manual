@@ -1,4 +1,4 @@
-##EXP-05: Making Player to collect the ammo and increase the bullet spawn Count.
+## EXP-05: Making Player to collect the ammo and increase the bullet spawn Count.
 ## Date:17/4/25
 
 ##  Aim
@@ -6,7 +6,7 @@ To implement a gameplay feature where the player collects ammo pickups in the ga
 
 ---
 
-## 🛠️ Procedure
+##  Procedure
 
 ### 1. Setup Player Character
 
@@ -55,7 +55,7 @@ To implement a gameplay feature where the player collects ammo pickups in the ga
 ![image](https://github.com/user-attachments/assets/e28cfc27-f127-40cf-94ba-e95d5fa1901f)
 
 
-## ✅ Result
+##  Result
 
 - The player starts with a limited number of bullets.
 - When the player overlaps with an ammo pickup:
